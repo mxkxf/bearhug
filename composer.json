@@ -1,0 +1,14 @@
+{
+    "name": "mikefrancis/bearhug",
+    "description": "An auto tweeter to get Tunnelbear credit.",
+    "authors": [
+        {
+            "name": "Mike Francis",
+            "email": "mikeffrancis@gmail.com"
+        }
+    ],
+    "require": {
+        "abraham/twitteroauth": "^0.6.4",
+        "monolog/monolog": "^1.19"
+    }
+}
