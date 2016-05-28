@@ -10,8 +10,12 @@ use Monolog\Handler\StreamHandler;
 $log = new Logger('name');
 $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
-$dotenv = new Dotenv(__DIR__);
-$dotenv->load();
+try {
+    $dotenv = new Dotenv(__DIR__);
+    $dotenv->load();
+} catch (\Dotenv\Exception\InvalidPathException $e) {
+    // Do nothing
+}
 
 $connection = new TwitterOAuth(
     getenv('TWITTER_KEY'),
