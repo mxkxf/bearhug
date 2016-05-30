@@ -36,10 +36,9 @@ $container['errorHandler'] = function (Container $container) {
 $app = new Application($container);
 
 $app->add(function (Request $request, Response $response, $next) {
-    throw new SomethingException();
     $queryParams = $request->getQueryParams();
 
-    if ($queryParams['token'] !== getenv('AUTH_TOKEN')) {
+    if (!isset($queryParams['token']) || $queryParams['token'] !== getenv('AUTH_TOKEN')) {
         throw new BearHugException('Unauthorised request');
     }
 
