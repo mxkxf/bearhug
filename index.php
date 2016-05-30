@@ -18,6 +18,13 @@ try {
 }
 
 if ($_GET['token'] === getenv('AUTH_TOKEN')) {
+    $statuses = [
+        "I can has 1GB of data @thetunnelbear pls?",
+        "Shameless @thetunnelbear tweet for more bandwidth. Use it - it's great!",
+        "Using @thetunnelbear as my VPN, you should check it out too.",
+        "My favourite bear, @thetunnelbear!"
+    ];
+
     $connection = new TwitterOAuth(
         getenv('TWITTER_KEY'),
         getenv('TWITTER_SECRET'),
@@ -26,11 +33,11 @@ if ($_GET['token'] === getenv('AUTH_TOKEN')) {
     );
 
     $tweet = $connection->post('statuses/update', [
-        //    'status' => 'I can has 1GB of data @thetunnelbear pls?'
-        'status' => 'Testing...'
+        'status' => $statuses[array_rand($statuses)]
     ]);
 
     $log->info('Tweet published: ', (array) $tweet);
 }
 
+header('HTTP/1.1 200 OK');
 exit;
