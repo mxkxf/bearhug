@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use MikeFrancis\BearHug\Command as BearHugCommand;
+use Dotenv\Dotenv;
+use Symfony\Component\Console\Application;
+
+try {
+    $dotenv = new Dotenv(__DIR__ . '/../');
+    $dotenv->load();
+} catch (\Dotenv\Exception\InvalidPathException $e) {
+    // Do nothing
+}
+
+$application = new Application();
+$application->add(new BearHugCommand());
+$application->run();
