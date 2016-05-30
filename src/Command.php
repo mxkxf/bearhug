@@ -2,6 +2,7 @@
 namespace MikeFrancis\BearHug;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Carbon\Carbon;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -28,6 +29,10 @@ class Command extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        if (Carbon::now()->day === 30) {
+            return 0;
+        }
+
         $statuses = [
             "I can has 1GB of data @thetunnelbear pls?",
             "Shameless @thetunnelbear tweet for more bandwidth. Use it - it's great!",
