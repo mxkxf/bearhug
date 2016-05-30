@@ -1,5 +1,7 @@
 <?php
 
+require_once('../vendor/autoload.php');
+
 use MikeFrancis\BearHug\Exception as BearHugException;
 use Dotenv\Dotenv;
 use Slim\App as Application;
@@ -7,8 +9,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Slim\Container;
-
-require_once('../vendor/autoload.php');
 
 try {
     $dotenv = new Dotenv(__DIR__ . '/../');
