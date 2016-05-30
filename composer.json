@@ -9,6 +9,12 @@
     ],
     "require": {
         "abraham/twitteroauth": "^0.6.4",
-        "monolog/monolog": "^1.19"
+        "monolog/monolog": "^1.19",
+        "slim/slim": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "MikeFrancis\\BearHug\\": "src/"
+        }
     }
 }
