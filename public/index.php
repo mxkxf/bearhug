@@ -19,7 +19,7 @@ try {
 
 $container = new Container([
     'settings' => [
-        'displayErrorDetails' => true
+        'displayErrorDetails' => getenv('APP_DEBUG') === 'true' ? true : false
     ]
 ]);
 
@@ -36,9 +36,10 @@ $container['errorHandler'] = function (Container $container) {
 $app = new Application($container);
 
 $app->add(function (Request $request, Response $response, $next) {
+    throw new SomethingException();
     $queryParams = $request->getQueryParams();
 
-    if (!isset($queryParams['token']) || $queryParams['token'] !== getenv('AUTH_TOKEN')) {
+    if ($queryParams['token'] !== getenv('AUTH_TOKEN')) {
         throw new BearHugException('Unauthorised request');
     }
 
