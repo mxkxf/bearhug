@@ -17,16 +17,20 @@ try {
     // Do nothing
 }
 
-$connection = new TwitterOAuth(
-    getenv('TWITTER_KEY'),
-    getenv('TWITTER_SECRET'),
-    getenv('TWITTER_ACCESS_TOKEN'),
-    getenv('TWITTER_ACCESS_TOKEN_SECRET')
-);
+if ($_GET['token'] === getenv('AUTH_TOKEN')) {
+    $connection = new TwitterOAuth(
+        getenv('TWITTER_KEY'),
+        getenv('TWITTER_SECRET'),
+        getenv('TWITTER_ACCESS_TOKEN'),
+        getenv('TWITTER_ACCESS_TOKEN_SECRET')
+    );
 
-$tweet = $connection->post('statuses/update', [
-//    'status' => 'I can has 1GB of data @thetunnelbear pls?'
-    'status' => 'Testing...'
-]);
+    $tweet = $connection->post('statuses/update', [
+        //    'status' => 'I can has 1GB of data @thetunnelbear pls?'
+        'status' => 'Testing...'
+    ]);
 
-$log->info('Tweet published: ', (array) $tweet);
+    $log->info('Tweet published: ', (array) $tweet);
+}
+
+exit;
