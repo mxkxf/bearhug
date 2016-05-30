@@ -29,7 +29,7 @@ class Command extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (Carbon::now()->day === 1) {
+        if (Carbon::now()->day !== 1) {
             return 0;
         }
 
